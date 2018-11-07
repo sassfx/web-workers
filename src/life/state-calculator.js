@@ -1,5 +1,3 @@
-
-
 const advanceStateOneStep = state => state.map(
   (row, j) => row.map(
     (value, i) => {
@@ -22,12 +20,4 @@ const getValueAtPosition = (state, i, j) => {
   return row ? row[i] || 0 : 0
 }
 
-onmessage = e => {
-  const { grid } = e.data
-  console.log(grid)
-  let currentGrid = grid
-  setInterval(() => {
-    //currentGrid = advanceStateOneStep(currentGrid)
-    //postMessage(currentGrid)
-  }, 100)
-}
+export { advanceStateOneStep }

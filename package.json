@@ -4,7 +4,8 @@
   "description": "Playing around with web workers and OffScreenCanvas",
   "scripts": {
     "build": "webpack --progress --profile",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "main": "index.js",
   "author": "Franciscus Prins",
@@ -17,6 +18,8 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.3.12",
     "webpack": "^4.24.0",
@@ -25,6 +28,7 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",

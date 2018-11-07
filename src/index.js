@@ -1,26 +1,24 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, combineReducers } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
-import Worker from './life.worker'
-import Grid from './grid'
-import reducer, { updateGrid } from './ducks'
+import Life, { reducer } from './life'
+import createWorkerMiddleware from './worker-middleware'
+import LifeWorker from './life/life.worker'
+import { updateGrid } from './life/grid/ducks'
+import { create2dArray } from './utils'
 
-const store = createStore(combineReducers({ grid: reducer }))
+const store = createStore(reducer, applyMiddleware(createWorkerMiddleware(new LifeWorker())))
 
-const worker = new Worker()
-worker.onmessage = event => store.dispatch(updateGrid(event.data))
-worker.postMessage({ grid: store.getState().grid })
-
-const App = () => 
-<div>
-  <Grid />
-</div>
+const INITIAL_HEIGHT = 50
+const INITIAL_WIDTH = 50
+const INITIAL_GRID = create2dArray(INITIAL_HEIGHT, INITIAL_WIDTH)
+store.dispatch(updateGrid(INITIAL_GRID))
 
 render(
   <Provider store={store}>
-    <App />
+    <Life />
   </Provider>,
   document.getElementById('root')
 )

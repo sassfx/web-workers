@@ -1,4 +1,0 @@
-const RESET_GRID = 'RESET_GRID'
-const UPDATE_GRID = 'UPDATE_GRID'
-
-export { RESET_GRID, UPDATE_GRID }

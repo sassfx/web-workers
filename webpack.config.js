@@ -32,21 +32,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [{
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            "presets": [["@babel/preset-env", {"modules": false}], "@babel/preset-react"],
-            "plugins": [
-              "react-hot-loader/babel",
+            'presets': [['@babel/preset-env', {'modules': false}], '@babel/preset-react'],
+            'plugins': [
+              'react-hot-loader/babel',
             ]
           }
         }]
-      },
-      {
-        test: /\.worker\.js$/,
-        use: { loader: 'worker-loader' }
       }
     ],
   },
@@ -63,7 +63,7 @@ module.exports = {
       }
     }),
     new HtmlWebPackPlugin({
-      template: "src/index.ejs",
+      template: 'src/index.ejs',
       inject: 'body'
     })
   ],
