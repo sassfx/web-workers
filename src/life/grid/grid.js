@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { number, func, arrayOf } from 'prop-types'
-import { updateGridCell } from './ducks'
+import { updateGridCell, selectors } from './ducks'
 
 class Grid extends Component {
   constructor(props) {
@@ -93,7 +93,7 @@ Grid.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-  grid: state.grid,
+  grid: selectors.getGrid(state),
 })
 
 const mapDispatchToProps = { updateGridCell }

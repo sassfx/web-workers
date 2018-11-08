@@ -1,5 +1,5 @@
 import { STEP_SIMULATION, START_SIMULATION, STOP_SIMULATION } from './controls/ducks'
-import { updateGrid } from './grid/ducks'
+import { updateGrid, selectors } from './grid/ducks'
 import { advanceStateOneStep } from './state-calculator'
 
 class LifeWorker {
@@ -28,8 +28,8 @@ class LifeWorker {
     clearInterval(this.intervalId)
   }
 
-  updateGrid({ grid }) { // TODO add selector
-    this.grid = grid
+  updateGrid(state) { // TODO add selector
+    this.grid = selectors.getGrid(state)
   }
 }
 
