@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bool, func } from 'prop-types'
 
 import { stepSimulation, startSimulation, stopSimulation } from './ducks'
+import PatternSelector from './pattern-selector'
 
 class Controls extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Controls extends Component {
           ? <button onClick={this.onStopClick}>Stop</button>
           : <button onClick={this.onStartClick}>Start</button>
         }
+        <PatternSelector />
       </Fragment>
     )
   }
