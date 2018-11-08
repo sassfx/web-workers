@@ -1,16 +1,16 @@
 const regex = /(?<count>\d*)(?<value>b|o)/g
 
 export default class RleLifePattern {
-  constructor(x, y, pattern) {
-    this.x = x
-    this.y = y
+  constructor(width, height, pattern) {
+    this.width = width
+    this.height = height
     this.pattern = pattern
   }
 
   decode() {
     const parts = this.pattern.split('$')
     return parts.map(part => {
-      let match;
+      let match
       let row = []
       do {
         match = regex.exec(part)
@@ -23,8 +23,8 @@ export default class RleLifePattern {
         }
       } while (match)
       
-      if (row.length < this.x) {
-        const rowPart = Array.apply(null, new Array(this.x - row.length)).map(() => 0)
+      if (row.length < this.width) {
+        const rowPart = Array.apply(null, new Array(this.width - row.length)).map(() => 0)
         row = row.concat(rowPart)
       }
 

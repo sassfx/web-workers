@@ -1,4 +1,4 @@
-import { STEP_SIMULATION, START_SIMULATION, STOP_SIMULATION } from './ducks'
+import { STEP_SIMULATION, START_SIMULATION, STOP_SIMULATION } from './controls/ducks'
 import { updateGrid } from './grid/ducks'
 import { advanceStateOneStep } from './state-calculator'
 

@@ -1,4 +1,5 @@
-import RleLifePattern from '../rle-life-pattern'
+import { createEmptyGridWithPattern } from './helpers'
+import RleLifePattern from './rle-life-pattern'
 
 const gliderGun = new RleLifePattern(36, 9, 
   `24bo$22bobo$12b2o6b2o12b2o$11bo3bo4b2o12b2o$2o8bo5bo3b2o$2o8bo3bob2o4b
@@ -16,4 +17,4 @@ const gliderTrain = new RleLifePattern(68, 33,
   17b6o6b2o$31b2o$32b2o!`
 )
 
-export { gliderGun, gliderTrain }
+export { gliderGun, gliderTrain, createEmptyGridWithPattern }
