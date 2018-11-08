@@ -1,6 +1,6 @@
 import { UPDATE_GRID, UPDATE_GRID_CELL } from './types'
+import createReducer from '../../../create-reducer'
 import { clone2dArray } from '../../../utils'
-
 
 const updaters = {
   [UPDATE_GRID]: ({ updatedGrid }) => updatedGrid,
@@ -12,13 +12,4 @@ const updaters = {
   }
 }
 
-const reducer = (state = [[0]], { type, payload }) => {
-  const updater = updaters[type]
-  if (updater) {
-    return updater(payload, state)
-  }
-
-  return state
-}
-
-export default reducer
+export default createReducer([[0]], updaters)

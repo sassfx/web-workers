@@ -1,3 +1,7 @@
 import Controls from './controls'
+import reducer from './ducks'
 
-export default Controls
+export {
+  Controls as default,
+  reducer
+}

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { func } from 'prop-types'
+import { bool, func } from 'prop-types'
+
 import { stepSimulation, startSimulation, stopSimulation } from './ducks'
 
 class Controls extends Component {
@@ -28,19 +29,23 @@ class Controls extends Component {
     return (
       <Fragment>
         <button onClick={this.onStepClick}>Step</button>
-        <button onClick={this.onStartClick}>Start</button>
-        <button onClick={this.onStopClick}>Stop</button>
+        { this.props.running 
+          ? <button onClick={this.onStopClick}>Stop</button>
+          : <button onClick={this.onStartClick}>Start</button>
+        }
       </Fragment>
     )
   }
 }
 
 Controls.propTypes = {
+  running: bool.isRequired,
   startSimulation: func.isRequired,
   stopSimulation: func.isRequired,
   stepSimulation: func.isRequired,
 }
 
+const mapStateToProps = state => ({ running: state.controls.running })
 const mapDispatchToProps = { startSimulation, stopSimulation, stepSimulation }
 
-export default connect(null, mapDispatchToProps)(Controls)
+export default connect(mapStateToProps, mapDispatchToProps)(Controls)
