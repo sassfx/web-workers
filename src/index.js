@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import Life, { reducer } from './life'
 import createWorkerMiddleware from './worker-middleware'
 import LifeWorker from './life/life.worker'
-import { updateGrid } from './life/grid/ducks'
+import { resetGrid } from './life/grid/ducks'
 import { create2dArray } from './utils'
 
 const store = createStore(reducer, applyMiddleware(createWorkerMiddleware(new LifeWorker())))
@@ -14,7 +14,7 @@ const store = createStore(reducer, applyMiddleware(createWorkerMiddleware(new Li
 const INITIAL_HEIGHT = 50
 const INITIAL_WIDTH = 50
 const INITIAL_GRID = create2dArray(INITIAL_HEIGHT, INITIAL_WIDTH)
-store.dispatch(updateGrid(INITIAL_GRID))
+store.dispatch(resetGrid(INITIAL_GRID))
 
 render(
   <Provider store={store}>

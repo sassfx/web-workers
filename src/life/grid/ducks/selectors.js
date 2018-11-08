@@ -1,7 +1,9 @@
-const getGrid = state => state.grid
+const getGrid = state => state.grid.current
+const getGeneration = state => state.grid.generation
 
 const selectors = {
-  getGrid
+  getGrid,
+  getGeneration,
 }
 
 export default selectors

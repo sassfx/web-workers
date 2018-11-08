@@ -1,4 +1,4 @@
 import Grid from './grid'
-import reducer from './ducks'
+import reducer, { selectors } from './ducks'
 
-export { Grid as default, reducer }
+export { Grid as default, reducer, selectors }

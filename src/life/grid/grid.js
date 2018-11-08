@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { number, func, arrayOf } from 'prop-types'
-import { updateGridCell, selectors } from './ducks'
+import { editGridCell, selectors } from './ducks'
 
 class Grid extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class Grid extends Component {
   }
 
   onGridClick(e) {
-    const { grid, height, width, updateGridCell } = this.props
+    const { grid, height, width, editGridCell } = this.props
     const yMax = grid.length
     const xMax = grid[0].length
     const xStep = width / xMax
@@ -71,7 +71,7 @@ class Grid extends Component {
     const y = Math.floor(offsetY / yStep)
 
     const newValue = grid[y][x] ? 0 : 1
-    updateGridCell(x, y, newValue)
+    editGridCell(x, y, newValue)
   }
 
   render() {
@@ -84,7 +84,7 @@ Grid.propTypes = {
   height: number.isRequired,
   width: number.isRequired,
   grid: arrayOf(arrayOf(number)).isRequired,
-  updateGridCell: func.isRequired,
+  editGridCell: func.isRequired,
 }
 
 Grid.defaultProps = {
@@ -96,6 +96,6 @@ const mapStateToProps = state => ({
   grid: selectors.getGrid(state),
 })
 
-const mapDispatchToProps = { updateGridCell }
+const mapDispatchToProps = { editGridCell }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid)

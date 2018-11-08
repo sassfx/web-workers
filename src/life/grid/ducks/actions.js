@@ -1,7 +1,8 @@
-import { RESET_GRID, UPDATE_GRID, UPDATE_GRID_CELL } from './types'
+import { RESET_GRID, UPDATE_GRID, EDIT_GRID_CELL } from './types'
 
-const resetGrid = () => ({
+const resetGrid = newGrid => ({
   type: RESET_GRID,
+  payload: { newGrid },
 })
 
 const updateGrid = updatedGrid => ({
@@ -9,9 +10,9 @@ const updateGrid = updatedGrid => ({
   payload: { updatedGrid },
 })
 
-const updateGridCell = (x, y, value) => ({
-  type: UPDATE_GRID_CELL,
+const editGridCell = (x, y, value) => ({
+  type: EDIT_GRID_CELL,
   payload: { x, y, value },
 })
 
-export { resetGrid, updateGrid, updateGridCell }
+export { resetGrid, updateGrid, editGridCell }
