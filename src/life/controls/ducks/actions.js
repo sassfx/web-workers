@@ -1,4 +1,4 @@
-import { STEP_SIMULATION, START_SIMULATION, STOP_SIMULATION } from './types'
+import { STEP_SIMULATION, START_SIMULATION, STOP_SIMULATION, SET_STEPS_PER_SECOND } from './types'
 
 const stepSimulation = () => ({
   type: STEP_SIMULATION,
@@ -12,4 +12,9 @@ const stopSimulation = () => ({
   type: STOP_SIMULATION,
 })
 
-export { stepSimulation, startSimulation, stopSimulation }
+const setStepsPerSecond = stepsPerSecond => ({
+  type: SET_STEPS_PER_SECOND,
+  payload: { stepsPerSecond },  
+})
+
+export { stepSimulation, startSimulation, stopSimulation, setStepsPerSecond }
